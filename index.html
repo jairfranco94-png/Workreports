@@ -8,256 +8,298 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
-        .card { transition: transform 0.2s ease; }
-        .card:hover { transform: translateY(-4px); }
-        .sticky-header { position: sticky; top: 0; z-index: 10; }
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .gradient-bg { background: linear-gradient(135deg, #374151 0%, #1f2937 100%); }
+        .table-container { @apply bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-10; }
+        .table-header { @apply p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50; }
+        .sticky-thead { position: sticky; top: 0; z-index: 10; @apply bg-slate-50 shadow-sm; }
+        .metric-card { @apply bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col; }
     </style>
 </head>
 <body class="p-4 md:p-8">
 
     <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <header class="gradient-bg text-white p-8 rounded-3xl shadow-xl mb-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left border border-white/10">
-            <div>
-                <h1 class="text-3xl font-bold leading-tight">Reporte de resultados de la evaluación de la producción de profesores en concurso</h1>
-            </div>
-            <div class="mt-6 md:mt-0 flex gap-4 shrink-0">
-                <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-md border border-white/5">
-                    <span class="block text-2xl font-bold">22</span>
-                    <span class="text-xs uppercase tracking-wider opacity-70">Aspirantes</span>
+        <!-- Header Principal -->
+        <header class="gradient-bg text-white p-10 rounded-3xl shadow-xl mb-8 border border-white/5 relative overflow-hidden">
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl font-extrabold leading-tight tracking-tight mb-2">Reporte de resultados de la evaluación de la producción de profesores en concurso</h1>
+                    <p class="text-slate-400 text-lg"></p>
                 </div>
-                <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-md border border-white/5">
-                    <span class="block text-2xl font-bold">3</span>
-                    <span class="text-xs uppercase tracking-wider opacity-70">Categorías</span>
+                <div class="flex gap-4 mt-8 md:mt-0">
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-28 text-center">
+                        <span class="block text-3xl font-bold">22</span>
+                        <span class="text-[10px] uppercase tracking-widest font-bold opacity-60">Aspirantes</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-28 text-center">
+                        <span class="block text-3xl font-bold">3</span>
+                        <span class="text-[10px] uppercase tracking-widest font-bold opacity-60">Categorías</span>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Metrics Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center md:text-left">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card border-t-4 border-t-blue-500">
-                <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
-                    <div class="p-3 bg-blue-100 text-blue-600 rounded-xl"><i class="fas fa-chalkboard-teacher text-xl"></i></div>
-                    <h3 class="font-semibold text-slate-700 leading-tight">Cargo al que aspira:<br><span class="text-blue-600">Profesor Asociado</span></h3>
+        <!-- Resumen de Categorías (Seleccionado en imagen) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- Profesor Asociado Card -->
+            <div class="metric-card border-l-4 border-l-blue-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-chalkboard-teacher text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm">Profesor Asociado</h3>
+                        <p class="text-xs text-slate-400">Tope Máximo: 320 pts</p>
+                    </div>
                 </div>
-                <p class="text-sm text-slate-500 mb-2">Tope Máximo: 320 pts</p>
-                <div class="text-2xl font-bold text-slate-800">10 Aspirantes</div>
-                <div class="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-500 w-[45%]"></div>
-                </div>
-            </div>
-            
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card border-t-4 border-t-indigo-500">
-                <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
-                    <div class="p-3 bg-indigo-100 text-indigo-600 rounded-xl"><i class="fas fa-user-graduate text-xl"></i></div>
-                    <h3 class="font-semibold text-slate-700 leading-tight">Cargo al que aspira:<br><span class="text-indigo-600">Profesor Asistente</span></h3>
-                </div>
-                <p class="text-sm text-slate-500 mb-2">Tope Máximo: 160 pts</p>
-                <div class="text-2xl font-bold text-slate-800">8 Aspirantes</div>
-                <div class="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-indigo-500 w-[36%]"></div>
+                <div class="text-2xl font-black text-slate-800">10 Aspirantes</div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-4 overflow-hidden">
+                    <div class="bg-blue-500 h-full w-[45%]"></div>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card border-t-4 border-t-teal-500">
-                <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
-                    <div class="p-3 bg-teal-100 text-teal-600 rounded-xl"><i class="fas fa-book-reader text-xl"></i></div>
-                    <h3 class="font-semibold text-slate-700 leading-tight">Cargo al que aspira:<br><span class="text-teal-600">Instructor Asociado</span></h3>
+            <!-- Profesor Asistente Card -->
+            <div class="metric-card border-l-4 border-l-indigo-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500">
+                        <i class="fas fa-user-graduate text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm">Profesor Asistente</h3>
+                        <p class="text-xs text-slate-400">Tope Máximo: 160 pts</p>
+                    </div>
                 </div>
-                <p class="text-sm text-slate-500 mb-2">Tope Máximo: 110 pts</p>
-                <div class="text-2xl font-bold text-slate-800">4 Aspirantes</div>
-                <div class="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-teal-500 w-[18%]"></div>
+                <div class="text-2xl font-black text-slate-800">8 Aspirantes</div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-4 overflow-hidden">
+                    <div class="bg-indigo-500 h-full w-[36%]"></div>
+                </div>
+            </div>
+
+            <!-- Instructor Asociado Card -->
+            <div class="metric-card border-l-4 border-l-teal-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-teal-500">
+                        <i class="fas fa-book-reader text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm">Instructor Asociado</h3>
+                        <p class="text-xs text-slate-400">Tope Máximo: 110 pts</p>
+                    </div>
+                </div>
+                <div class="text-2xl font-black text-slate-800">4 Aspirantes</div>
+                <div class="w-full bg-slate-100 h-1.5 rounded-full mt-4 overflow-hidden">
+                    <div class="bg-teal-500 h-full w-[18%]"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Main Table -->
-        <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-8">
-            <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row justify-between items-center">
-                <h3 class="font-bold text-slate-800 text-lg">Ranking Detallado de Aspirantes</h3>
-                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2 md:mt-0">LISTADO COMPLETO (22 DOCENTES)</div>
+        <!-- 1. TABLA INSTRUCTOR ASOCIADO -->
+        <div class="table-container border-t-4 border-t-teal-500">
+            <div class="table-header">
+                <h2 class="font-bold text-slate-800 uppercase tracking-wide flex items-center gap-2">
+                    <i class="fas fa-list-ol text-teal-500"></i> Instructor Asociado
+                </h2>
+                <span class="text-[10px] font-bold px-3 py-1 bg-teal-50 text-teal-700 rounded-full border border-teal-100 uppercase">Tope: 110 pts</span>
             </div>
-            <div class="overflow-x-auto max-h-[600px] overflow-y-auto">
+            <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
-                    <thead class="sticky-header bg-slate-50 text-slate-500 text-[11px] uppercase font-bold tracking-wider border-b border-slate-200">
+                    <thead class="sticky-thead text-slate-500 text-[10px] uppercase font-bold tracking-wider border-b border-slate-200">
                         <tr>
-                            <th class="px-6 py-4">DOCENTE</th>
-                            <th class="px-6 py-4">CARGO AL QUE ASPIRA</th>
-                            <th class="px-6 py-4">PUNTAJE TOTAL</th>
-                            <th class="px-6 py-4">CUMPLIMIENTO (%)</th>
-                            <th class="px-6 py-4 text-center">HOMOLOGADO</th>
+                            <th class="px-6 py-4">Nombre del Docente</th>
+                            <th class="px-6 py-4 text-center">Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Homologado</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-sm">
-                        <!-- Instructor Asociado -->
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Paez Silva Maritza</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Instructor Asociado</td>
-                            <td class="px-6 py-4 font-mono text-green-600 font-bold">166.9 / 110</td>
-                            <td class="px-6 py-4 text-green-600 font-bold">152%</td>
-                            <td class="px-6 py-4 text-center font-bold text-blue-600">10.0%</td>
+                    <tbody class="divide-y divide-slate-100 text-[13px]">
+                        <tr class="hover:bg-teal-50/30 transition-colors bg-teal-50/20 font-bold">
+                            <td class="px-6 py-3 text-slate-800">PAEZ SILVA MARITZA</td>
+                            <td class="px-6 py-3 text-center font-mono">166,9</td>
+                            <td class="px-6 py-3 text-center text-teal-600">152%</td>
+                            <td class="px-6 py-3 text-center text-blue-600">10,0%</td>
                         </tr>
                         <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Cortes Acosta Diana Carolina</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Instructor Asociado</td>
-                            <td class="px-6 py-4 font-mono">66.5 / 110</td>
-                            <td class="px-6 py-4">60%</td>
-                            <td class="px-6 py-4 text-center font-bold text-blue-600">6.0%</td>
+                            <td class="px-6 py-3 text-slate-700 font-medium">CORTES ACOSTA DIANA CAROLINA</td>
+                            <td class="px-6 py-3 text-center font-mono">66,5</td>
+                            <td class="px-6 py-3 text-center">60%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">6,0%</td>
                         </tr>
                         <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Mogollon Londoño Oscar Leonardo</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Instructor Asociado</td>
-                            <td class="px-6 py-4 font-mono">30.5 / 110</td>
-                            <td class="px-6 py-4">28%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">2.8%</td>
+                            <td class="px-6 py-3 text-slate-700 font-medium">MORENO MUÑOZ LILIANA</td>
+                            <td class="px-6 py-3 text-center font-mono">34,0</td>
+                            <td class="px-6 py-3 text-center">31%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">3,1%</td>
                         </tr>
                         <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Lizarazo Sanchez Manuel Antonio</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Instructor Asociado</td>
-                            <td class="px-6 py-4 font-mono">27.3 / 110</td>
-                            <td class="px-6 py-4">25%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">2.5%</td>
-                        </tr>
-
-                        <!-- Profesor Asistente -->
-                        <tr class="hover:bg-slate-50 transition-colors border-t-2 border-slate-100">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Leguizamo Serna Luis Ramiro</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono text-green-600 font-bold">210 / 160</td>
-                            <td class="px-6 py-4 text-green-600 font-bold">131%</td>
-                            <td class="px-6 py-4 text-center font-bold text-blue-600">10.0%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Chamorro Futinico Julio Cesar</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">77 / 160</td>
-                            <td class="px-6 py-4">48%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">4.8%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Romero Leon Henry Antonio</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">70 / 160</td>
-                            <td class="px-6 py-4">44%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">4.4%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Vargas Garcia Pedro Eladio</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">35 / 160</td>
-                            <td class="px-6 py-4">22%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">2.2%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Orozco Alzate Mauricio</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">12 / 160</td>
-                            <td class="px-6 py-4">8%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">0.8%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Gallego Torres Adriana Paola</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">0 / 160</td>
-                            <td class="px-6 py-4">0%</td>
-                            <td class="px-6 py-4 text-center text-slate-300">0.0%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Muñoz Guerrero Luis Fernando</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">0 / 160</td>
-                            <td class="px-6 py-4">0%</td>
-                            <td class="px-6 py-4 text-center text-slate-300">0.0%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Paez Silva Luis Fernando</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asistente</td>
-                            <td class="px-6 py-4 font-mono">0 / 160</td>
-                            <td class="px-6 py-4">0%</td>
-                            <td class="px-6 py-4 text-center text-slate-300">0.0%</td>
-                        </tr>
-
-                        <!-- Profesor Asociado -->
-                        <tr class="hover:bg-slate-50 transition-colors border-t-2 border-slate-100">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Diaz González Freddy Alexander</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">192 / 320</td>
-                            <td class="px-6 py-4">60%</td>
-                            <td class="px-6 py-4 text-center font-bold text-blue-600">6.0%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Oliveros Fortiche Diana Esperanza</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">188.5 / 320</td>
-                            <td class="px-6 py-4">59%</td>
-                            <td class="px-6 py-4 text-center font-bold text-blue-600">5.9%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Sanchez Sanabria Henry Mauricio</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">176 / 320</td>
-                            <td class="px-6 py-4">55%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">5.5%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Victorino Guzman Jorge Enrique</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">174 / 320</td>
-                            <td class="px-6 py-4">54%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">5.4%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Gordillo Gordillo Manuel Alfonso</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">136.5 / 320</td>
-                            <td class="px-6 py-4">43%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">4.3%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Torres Parra Maria Teresa</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">121.5 / 320</td>
-                            <td class="px-6 py-4">38%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">3.8%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Martinez Lopez Jose Maria</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">48 / 320</td>
-                            <td class="px-6 py-4">15%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">1.5%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Sánchez Buitrago Jairo José</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">31.5 / 320</td>
-                            <td class="px-6 py-4">10%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">1.0%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Parra Bautista Jose Felix</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">11 / 320</td>
-                            <td class="px-6 py-4">3%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">0.3%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors border-b border-slate-200">
-                            <td class="px-6 py-4 font-semibold text-slate-700 uppercase">Bautista Jose Felix</td>
-                            <td class="px-6 py-4 text-slate-500 italic">Profesor Asociado</td>
-                            <td class="px-6 py-4 font-mono">9.5 / 320</td>
-                            <td class="px-6 py-4">3%</td>
-                            <td class="px-6 py-4 text-center text-slate-400">0.3%</td>
+                            <td class="px-6 py-3 text-slate-700 font-medium">TALERO LOPEZ PACO HERNANDO</td>
+                            <td class="px-6 py-3 text-center font-mono">24,0</td>
+                            <td class="px-6 py-3 text-center">22%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">2,2%</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="p-6 bg-slate-50 text-center text-slate-400 text-xs italic">
-                Resumen estadístico de los 22 aspirantes procesados en la convocatoria vigente.
+        </div>
+
+        <!-- 2. TABLA PROFESOR ASISTENTE -->
+        <div class="table-container border-t-4 border-t-indigo-500">
+            <div class="table-header">
+                <h2 class="font-bold text-slate-800 uppercase tracking-wide flex items-center gap-2">
+                    <i class="fas fa-list-ol text-indigo-500"></i> Profesor Asistente
+                </h2>
+                <span class="text-[10px] font-bold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100 uppercase">Tope: 160 pts</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="sticky-thead text-slate-500 text-[10px] uppercase font-bold tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="px-6 py-4">Nombre del Docente</th>
+                            <th class="px-6 py-4 text-center">Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Homologado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-[13px]">
+                        <tr class="hover:bg-indigo-50/30 transition-colors bg-teal-50/20 font-bold">
+                            <td class="px-6 py-3 text-slate-800">LEGUIZAMO SERNA LUIS RAMIRO</td>
+                            <td class="px-6 py-3 text-center font-mono">210,0</td>
+                            <td class="px-6 py-3 text-center text-teal-600">131%</td>
+                            <td class="px-6 py-3 text-center text-blue-600">10,0%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">CHAMORRO FUTINICO JULIO CESAR</td>
+                            <td class="px-6 py-3 text-center font-mono">77,0</td>
+                            <td class="px-6 py-3 text-center">48%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">4,8%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">ROMERO LEON HENRY ANTONIO</td>
+                            <td class="px-6 py-3 text-center font-mono">70,0</td>
+                            <td class="px-6 py-3 text-center">44%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">4,4%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">GUTIERREZ PABON JOSE GREGORIO</td>
+                            <td class="px-6 py-3 text-center font-mono">19,0</td>
+                            <td class="px-6 py-3 text-center">12%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">1,2%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">FORERO SALAMANCA PAOLA</td>
+                            <td class="px-6 py-3 text-center font-mono">17,0</td>
+                            <td class="px-6 py-3 text-center">11%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">1,1%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">CRISTANCHO CARRILLO ORLANDO</td>
+                            <td class="px-6 py-3 text-center font-mono">13,0</td>
+                            <td class="px-6 py-3 text-center">8%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">0,8%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors opacity-50">
+                            <td class="px-6 py-3 text-slate-600">CASTELBLANCO GONZALEZ HECTOR ALFONSO</td>
+                            <td class="px-6 py-3 text-center font-mono">0,0</td>
+                            <td class="px-6 py-3 text-center">0%</td>
+                            <td class="px-6 py-3 text-center">0,0%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors opacity-50">
+                            <td class="px-6 py-3 text-slate-600">VALLEJO RODRIGUEZ VICTOR FELIPE</td>
+                            <td class="px-6 py-3 text-center font-mono">0,0</td>
+                            <td class="px-6 py-3 text-center">0%</td>
+                            <td class="px-6 py-3 text-center">0,0%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+
+        <!-- 3. TABLA PROFESOR ASOCIADO -->
+        <div class="table-container border-t-4 border-t-blue-500">
+            <div class="table-header">
+                <h2 class="font-bold text-slate-800 uppercase tracking-wide flex items-center gap-2">
+                    <i class="fas fa-list-ol text-blue-500"></i> Profesor Asociado
+                </h2>
+                <span class="text-[10px] font-bold px-3 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-100 uppercase">Tope: 320 pts</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="sticky-thead text-slate-500 text-[10px] uppercase font-bold tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="px-6 py-4">Nombre del Docente</th>
+                            <th class="px-6 py-4 text-center">Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Puntaje Obtenido</th>
+                            <th class="px-6 py-4 text-center">% Homologado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-[13px]">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">DIAZ GONZÁLEZ FREDDY ALEXANDER</td>
+                            <td class="px-6 py-3 text-center font-mono">192,0</td>
+                            <td class="px-6 py-3 text-center">60%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">6,0%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">OLIVEROS FORTICHE DIANA ESPERANZA</td>
+                            <td class="px-6 py-3 text-center font-mono">188,5</td>
+                            <td class="px-6 py-3 text-center">59%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">5,9%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">SANCHEZ SANABRIA HENRY MAURICIO</td>
+                            <td class="px-6 py-3 text-center font-mono">176,0</td>
+                            <td class="px-6 py-3 text-center">55%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">5,5%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">VICTORINO GUZMAN JORGE ENRIQUE</td>
+                            <td class="px-6 py-3 text-center font-mono">174,0</td>
+                            <td class="px-6 py-3 text-center">54%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">5,4%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">GUERRERO FLORES MARIA PAZ</td>
+                            <td class="px-6 py-3 text-center font-mono">118,0</td>
+                            <td class="px-6 py-3 text-center">37%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">3,7%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">PALOMINO FORERO JORGE ALBERTO</td>
+                            <td class="px-6 py-3 text-center font-mono">116,5</td>
+                            <td class="px-6 py-3 text-center">36%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">3,6%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">CEPEDA VALERO OSCAR MAURICIO</td>
+                            <td class="px-6 py-3 text-center font-mono">56,0</td>
+                            <td class="px-6 py-3 text-center">18%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">1,8%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">MINORTA CELY VLADIMIR ORLANDO</td>
+                            <td class="px-6 py-3 text-center font-mono">43,0</td>
+                            <td class="px-6 py-3 text-center">13%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">1,3%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">OSPINA BERNAL JULIETTE</td>
+                            <td class="px-6 py-3 text-center font-mono">37,0</td>
+                            <td class="px-6 py-3 text-center">12%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">1,2%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-3 text-slate-700 font-medium">PACHON HIGUERA MIGUEL ANGEL</td>
+                            <td class="px-6 py-3 text-center font-mono">9,5</td>
+                            <td class="px-6 py-3 text-center">3%</td>
+                            <td class="px-6 py-3 text-center text-blue-600 font-bold">0,3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="text-center text-slate-400 text-xs py-10">
+            Reporte generado en base a datos oficiales de la convocatoria.
+        </footer>
     </div>
 
 </body>
